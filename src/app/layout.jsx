@@ -1,6 +1,6 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
 
 import { ThemeProvider } from "@/context/ThemeContext";
 
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
         <ThemeProvider>
           <div className="container">
-            <Navbar />
+            <Header />
             
             {children}
            

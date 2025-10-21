@@ -1,9 +1,22 @@
+"use client";
+
 import Image from "next/image";
+
 import styles from "./page.module.css";
 import mainPhoto from "../../public/images/main-photo.svg";
+
+
+import { useRouter } from 'next/navigation';
 import Button from "@/elements/Button/Button";
 
 export default function Home() {
+const router = useRouter();
+const handleSurveyStart = () => {
+    // التنقل إلى مسار صفحة الاستبيان
+    router.push('/survey/'); 
+  };
+
+
   return (
     <div className={styles.container}>
       <div className={styles.col}>
@@ -16,7 +29,7 @@ export default function Home() {
         
         <Button
         text="Kostenlos prüfen" 
-        // handleClick={handleSurveyStart} 
+        handleClick={handleSurveyStart} 
         ></Button>
         
       </div>

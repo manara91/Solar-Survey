@@ -1,8 +1,8 @@
 
-import styles from "./Navbar.module.css";
+import styles from "./Header.module.css";
 import DarkModeToggle from "../../../elements/DarkModeToggle/DarkModeToggle";
 
-function Navbar() {
+function Header() {
   return (
     <div className={styles.container}>
       
@@ -15,4 +15,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Header;

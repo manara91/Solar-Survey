@@ -1,0 +1,58 @@
+.questionContainer {
+     max-width: 1000px;
+  height: auto;
+
+  margin: 0 auto;
+ 
+  display: flex;
+  justify-content: space-between;
+}
+.questionForm {
+  
+    font-size: 2.5rem;
+
+    padding: 24px;
+    
+
+}
+
+
+/* .questionForm p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+} */
+
+.questionForm label {
+  
+    display: flex;
+  
+    align-items: center;
+    
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 15px 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px; /* حواف مستديرة */
+  
+    background-color: #f9f9f9;
+    font-size: 2rem;
+    color: #555;
+}
+
+/* 22222222 */
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
