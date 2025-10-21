@@ -1,0 +1,21 @@
+.logout {
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary);
+  padding: 6px;
+  border: none;
+  font-weight: bold;
+}
+
+
+.button {
+  padding: 20px;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  width: max-content;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
+}
