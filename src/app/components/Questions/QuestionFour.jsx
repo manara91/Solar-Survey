@@ -1,56 +1,58 @@
-
+// components/QuestionOne.js
+import React from "react";
+import { useMutuallyExclusive } from "../../../hooks/useMutuallyExclusive";
 import styles from "./questions.module.css";
 
-
 function QuestionFour() {
+  const {
+    selectedOptions,
+    noInformation,
+    handleRadioChange,
+    handleCheckboxChange,
+    isRadioDisabled,
+  } = useMutuallyExclusive();
+
+  const options = ["Option A", "Option B", "Option C", "Option D"];
+
   return (
     <div className={styles.questionContainer}>
-      
+      <form className={styles.questionForm}>
+        <h3>4. Was ist Ihre erste Frage?</h3>
 
-     
-<form className={styles.questionForm}>
-    <h3>4. Wie hoch ist Ihr Stromverbrauch pro Jahr?</h3>
+        <div className={styles.optionsGroup}>
+          <p>Bitte wählen Sie aus (Mehrfachauswahl möglich):</p>
+          {options.map((option) => (
+            <label
+              key={option}
+              className={noInformation ? styles.disabledLabel : ""}
+            >
+              <input
+                type="checkbox"
+                value={option}
+                name="questionOne"
+                onChange={handleCheckboxChange}
+                disabled={noInformation}
+                checked={selectedOptions.includes(option)}
+              />
+              {option}
+            </label>
+          ))}
 
-    <label>
-            <input 
-              type="radio" 
-              name="roofArea" 
-              value="20-50" 
-              
+          <hr />
+
+          <label>
+            <input
+              type="radio"
+              value="Keine Angabe"
+              name="questionOneStatus"
+              onChange={handleRadioChange}
+              checked={noInformation}
+              disabled={isRadioDisabled}
             />
-           Einfamilienhaus
-        
-    </label>
-
-     <label>
-            <input 
-              type="radio" 
-              name="roofArea" 
-              value="20-50" 
-              
-            />
-           Mehrfamilienhaus
-        
-    </label>
-
-     <label>
-            <input 
-              type="radio" 
-              name="roofArea" 
-              value="20-50" 
-              
-            />
-           Gewerbeimmobilie
-        
-    </label>
-
-
-    
-         
-       
-</form>
-        
-      
+            Keine Angabe
+          </label>
+        </div>
+      </form>
     </div>
   );
 }

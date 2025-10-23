@@ -34,7 +34,7 @@
     margin-bottom: 10px;
     padding: 15px 15px;
     border: 2px solid #ccc;
-    border-radius: 8px; /* حواف مستديرة */
+    border-radius: 8px; 
   
     background-color: #f9f9f9;
     font-size: 2rem;
@@ -42,17 +42,16 @@
 }
 
 /* 22222222 */
-.optionsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.disabledLabel {
+  color: #aaa; 
+  cursor: not-allowed;
 }
 
-.optionLabel {
+
+.optionsGroup {
   display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  flex-direction: column; 
+  gap: 10px;
 }
+
+
