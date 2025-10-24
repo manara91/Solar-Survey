@@ -11,7 +11,7 @@ function QuestionTwo({ updateFormData }) {
     isRadioDisabled,
   } = useMutuallyExclusive();
 
-  const options = ["Option A", "Option B", "Option C", "Option D"];
+  const options = ["Süd", "West", "Ost", "Nord"];
   const formKey = "question2_options";
   useEffect(() => {
     let valueToStore;
@@ -27,10 +27,10 @@ function QuestionTwo({ updateFormData }) {
   return (
     <div className={styles.questionContainer}>
       <form className={styles.questionForm}>
-        <h3>2. Was ist Ihre erste Frage?</h3>
+        <h3>2. Wie ist Ihr Dach ausgerichtet?</h3>
+        <p>Mehrfachauswahl möglich:</p>
 
         <div className={styles.optionsGroup}>
-          <p>Bitte wählen Sie aus (Mehrfachauswahl möglich):</p>
           {options.map((option) => (
             <label
               key={option}

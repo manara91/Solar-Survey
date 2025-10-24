@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-
+import styles from "./survey.module.css";
 import Button from "../../elements/Button/Button";
 
 import QuestionOne from "../components/Questions/QuestionOne";
@@ -75,13 +75,13 @@ export default function SurveyPage() {
         return <QuestionTwo {...props} />;
 
       case 3:
-        return <QuestionThree />;
+        return <QuestionThree {...props} />;
 
       case 4:
-        return <QuestionFour />;
+        return <QuestionFour {...props} />;
 
       case 5:
-        return <QuestionFive />;
+        return <QuestionFive {...props} />;
 
       default:
         return <div>Danke! </div>;
@@ -89,10 +89,10 @@ export default function SurveyPage() {
   };
 
   return (
-    <div className="survey-container">
+    <div className={styles.surveyContainer}>
       {renderCurrentQuestion()}
 
-      <div className="survey-buttons">
+      <div className={styles.surveyButtons}>
         {currentQuestion > 1 && (
           <Button text="Vorherige Frage" handleClick={goToPreviousQuestion} />
         )}

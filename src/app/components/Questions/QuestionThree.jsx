@@ -1,9 +1,8 @@
-// components/QuestionOne.js
-import React from "react";
+import React, { useEffect } from "react";
 import { useMutuallyExclusive } from "../../../hooks/useMutuallyExclusive";
 import styles from "./questions.module.css";
 
-function QuestionThree() {
+function QuestionThree({ updateFormData }) {
   const {
     selectedOptions,
     noInformation,
@@ -12,7 +11,20 @@ function QuestionThree() {
     isRadioDisabled,
   } = useMutuallyExclusive();
 
-  const options = ["Option A", "Option B", "Option C", "Option D"];
+  const options = ["Option E", "Option F", "Option G", "Option H"];
+  const formKey = "question3_options";
+
+  useEffect(() => {
+    let valueToStore;
+
+    if (noInformation) {
+      valueToStore = "Keine Angabe";
+    } else {
+      valueToStore = selectedOptions;
+    }
+
+    updateFormData(formKey, valueToStore);
+  }, [selectedOptions, noInformation]);
 
   return (
     <div className={styles.questionContainer}>

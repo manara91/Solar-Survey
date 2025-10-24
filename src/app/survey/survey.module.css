@@ -1,0 +1,9 @@
+.surveyContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.surveyButtons {
+  margin-left: 15px;
+}
