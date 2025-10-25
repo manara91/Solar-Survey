@@ -7,28 +7,30 @@ function QuestionOne({ updateFormData }) {
     updateFormData(name, value);
   };
   return (
-    <div className={styles.questionContainer}>
-      <form className={styles.questionForm} onChange={handleChange}>
-        <h3>1. Welche Art von Immobilie besitzen Sie?</h3>
+    <>
+      <div className={styles.questionContainer}>
+        <form className={styles.questionForm} onChange={handleChange}>
+          <h3>1. Welche Art von Immobilie besitzen Sie?</h3>
 
-        <div className={styles.questionLabels}>
-          <label>
-            <input type="radio" name="houseType" value="singleHouse" />
-            Einfamilienhaus
-          </label>
+          <div className={styles.questionLabels}>
+            <label>
+              <input type="radio" name="houseType" value="singleHouse" />
+              Einfamilienhaus
+            </label>
 
-          <label>
-            <input type="radio" name="houseType" value="multiHouses" />
-            Mehrfamilienhaus
-          </label>
+            <label>
+              <input type="radio" name="houseType" value="multiHouses" />
+              Mehrfamilienhaus
+            </label>
 
-          <label>
-            <input type="radio" name="houseType" value="commercialProperty" />
-            Gewerbeimmobilie
-          </label>
-        </div>
-      </form>
-    </div>
+            <label>
+              <input type="radio" name="houseType" value="commercialProperty" />
+              Gewerbeimmobilie
+            </label>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

@@ -16,8 +16,10 @@ export async function POST(request) {
       { status: 400 }
     );
   }
+  const randomValue = Math.floor(Math.random() * 2);
 
-  const isSolarWorthIt = Math.random() < 0.5;
+  const isSolarWorthIt = randomValue === 1;
+  // const isSolarWorthIt = Math.random() < 0.5;
 
   const responseMessage = isSolarWorthIt
     ? "yes it worth"

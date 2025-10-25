@@ -11,7 +11,7 @@ function QuestionFour({ updateFormData }) {
     isRadioDisabled,
   } = useMutuallyExclusive();
 
-  const options = ["Option E", "Option F", "Option G", "Option H"];
+  const options = ["Unter 3.000 kWh", "3.000 - 5.000 kWh", "Über 5.000 kWh"];
   const formKey = "question4_options";
 
   useEffect(() => {
@@ -29,10 +29,10 @@ function QuestionFour({ updateFormData }) {
   return (
     <div className={styles.questionContainer}>
       <form className={styles.questionForm}>
-        <h3>4. Was ist Ihre erste Frage?</h3>
+        <h3>4. Wie hoch ist Ihr Stromverbrach pro Jahr?</h3>
+        <p>(Mehrfachauswahl möglich):</p>
 
         <div className={styles.optionsGroup}>
-          <p>Bitte wählen Sie aus (Mehrfachauswahl möglich):</p>
           {options.map((option) => (
             <label
               key={option}

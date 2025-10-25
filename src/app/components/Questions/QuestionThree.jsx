@@ -11,7 +11,7 @@ function QuestionThree({ updateFormData }) {
     isRadioDisabled,
   } = useMutuallyExclusive();
 
-  const options = ["Option E", "Option F", "Option G", "Option H"];
+  const options = ["Unter 5 Jahre", "5-15 Jahre", "Über 15 Jahre"];
   const formKey = "question3_options";
 
   useEffect(() => {
@@ -29,10 +29,10 @@ function QuestionThree({ updateFormData }) {
   return (
     <div className={styles.questionContainer}>
       <form className={styles.questionForm}>
-        <h3>3. Was ist Ihre erste Frage?</h3>
+        <h3>3. Wie alt ist Ihr Dach?</h3>
+        <p>Mehrfachauswahl möglich:</p>
 
         <div className={styles.optionsGroup}>
-          <p>Bitte wählen Sie aus (Mehrfachauswahl möglich):</p>
           {options.map((option) => (
             <label
               key={option}
