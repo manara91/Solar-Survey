@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,11 +7,8 @@ import styles from "./survey.module.css";
 import Button from "../../elements/Button/Button";
 import loader from "../../../public/images/loader.svg";
 
-import QuestionOne from "../components/Questions/QuestionOne";
-import QuestionTwo from "../components/Questions/QuestionTwo";
-import QuestionThree from "../components/Questions/QuestionThree";
-import QuestionFour from "../components/Questions/QuestionFour";
-import QuestionFive from "../components/Questions/QuestionFive";
+import CheckboxQuestions from "../components/Questions/CheckboxQuestions";
+import RadioQuestions from "../components/Questions/RadioQuestions";
 
 export default function SurveyPage() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -86,18 +83,58 @@ export default function SurveyPage() {
 
     switch (currentQuestion) {
       case 1:
-        return <QuestionOne {...props} />;
+        return (
+          <RadioQuestions
+            question="1. Welche Art von Immobilie besitzen Sie?"
+            options={[
+              "Einfamilienhaus",
+              "Mehrfamilienhaus",
+              "Gewerbeimmobilie",
+            ]}
+            name="houseType"
+            updateFormData={updateFormData}
+          />
+        );
+
       case 2:
-        return <QuestionTwo {...props} />;
+        return (
+          <CheckboxQuestions
+            question="2. Wie ist Ihr Dach ausgerichtet?"
+            options={["Süd", "West", "Ost", "Nord"]}
+            formKey="question2_options"
+            updateFormData={updateFormData}
+          />
+        );
 
       case 3:
-        return <QuestionThree {...props} />;
+        return (
+          <CheckboxQuestions
+            question="3. Wie alt ist Ihr Dach?"
+            options={["Unter 5 Jahre", "5-15 Jahre", "Über 15 Jahre"]}
+            formKey="question3_options"
+            updateFormData={updateFormData}
+          />
+        );
 
       case 4:
-        return <QuestionFour {...props} />;
+        return (
+          <CheckboxQuestions
+            question="4. Wie hoch ist Ihr Stromverbrach pro Jahr?"
+            options={["Unter 3.000 kWh", "3.000 - 5.000 kWh", "Über 5.000 kWh"]}
+            formKey="question4_options"
+            updateFormData={updateFormData}
+          />
+        );
 
       case 5:
-        return <QuestionFive {...props} />;
+        return (
+          <RadioQuestions
+            question="5. Sind Sie auch an weiteren Energielösungen interessiert?"
+            options={["Ja", "Nein", "Weis nicht"]}
+            name="EnergySolutions"
+            updateFormData={updateFormData}
+          />
+        );
 
       default:
         return <div>Danke</div>;

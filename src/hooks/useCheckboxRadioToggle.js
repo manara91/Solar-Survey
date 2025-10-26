@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useMutuallyExclusive(initialOptions = []) {
+export function useCheckboxRadioToggle(initialOptions = []) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [noInformation, setNoInformation] = useState(false);
 

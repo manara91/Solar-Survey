@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
-import { useMutuallyExclusive } from "../../../hooks/useMutuallyExclusive";
+import { useCheckboxRadioToggle } from "../../../hooks/useCheckboxRadioToggle";
 import styles from "./questions.module.css";
 
-function QuestionFour({ updateFormData }) {
+function CheckboxQuestions({ question, options, formKey, updateFormData }) {
   const {
     selectedOptions,
     noInformation,
     handleRadioChange,
     handleCheckboxChange,
     isRadioDisabled,
-  } = useMutuallyExclusive();
-
-  const options = ["Unter 3.000 kWh", "3.000 - 5.000 kWh", "Über 5.000 kWh"];
-  const formKey = "question4_options";
+  } = useCheckboxRadioToggle();
 
   useEffect(() => {
     let valueToStore;
@@ -24,12 +21,12 @@ function QuestionFour({ updateFormData }) {
     }
 
     updateFormData(formKey, valueToStore);
-  }, [selectedOptions, noInformation]);
+  }, [selectedOptions, noInformation, formKey, updateFormData]);
 
   return (
     <div className={styles.questionContainer}>
       <form>
-        <h3>4. Wie hoch ist Ihr Stromverbrach pro Jahr?</h3>
+        <h3>{question}</h3>
         <p>(Mehrfachauswahl möglich)</p>
 
         <div className={styles.questionLabels}>
@@ -41,7 +38,7 @@ function QuestionFour({ updateFormData }) {
               <input
                 type="checkbox"
                 value={option}
-                name="questionOne"
+                name={formKey}
                 onChange={handleCheckboxChange}
                 disabled={noInformation}
                 checked={selectedOptions.includes(option)}
@@ -56,7 +53,7 @@ function QuestionFour({ updateFormData }) {
             <input
               type="radio"
               value="Keine Angabe"
-              name="questionOneStatus"
+              name={`${formKey}Status`}
               onChange={handleRadioChange}
               checked={noInformation}
               disabled={isRadioDisabled}
@@ -69,4 +66,4 @@ function QuestionFour({ updateFormData }) {
   );
 }
 
-export default QuestionFour;
+export default CheckboxQuestions;
