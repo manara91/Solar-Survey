@@ -14,7 +14,6 @@ export default function ResultsPage({ searchParams }) {
   const searchParamsValue = React.use(searchParams);
   const isWorthIt = searchParamsValue.worthIt === "true";
 
-  // const isWorthIt = searchParams.worthIt === "true";
   const sendMsg = () => {
     router.push("/contact/");
   };
@@ -30,7 +29,6 @@ export default function ResultsPage({ searchParams }) {
       main: "Die Ausgangslage für eine Solaranlage ist bei Ihnen ausgezeichnet",
       sub: "Wir empfehlen, die nächsten Schritte zu prüfen.",
     };
-    colorStyle = "green";
   } else {
     title = "Derzeit nicht optimal";
     summaryText = {

@@ -1,3 +1,5 @@
+// Reusable checkbox question component for multiple selection
+
 import { useEffect } from "react";
 import { useCheckboxButton } from "../../../hooks/useCheckboxButton";
 import styles from "./questions.module.css";
@@ -12,6 +14,13 @@ function CheckboxQuestions({
   let { selectedOptions, noInfo, handleRadioChange, handleCheckboxChange } =
     useCheckboxButton(currentValue);
 
+  /**
+   * Effect to synchronize checkbox selections with parent form state
+   * Handles two scenarios:
+   * - When "no information" is selected: stores static string
+   * - When options are selected: stores array of selected values
+   * Ensures form data stays updated with user interactions
+   */
   useEffect(() => {
     let valueToStore;
 

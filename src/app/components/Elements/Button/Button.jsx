@@ -1,3 +1,5 @@
+// Reusable button component
+
 "use client";
 import styles from "./button.module.css";
 

@@ -1,3 +1,4 @@
+// Provides theme switching functionality with smooth animation
 "use client";
 import { useContext } from "react";
 import styles from "./DarkModeToggle.module.css";

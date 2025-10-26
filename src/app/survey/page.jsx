@@ -31,7 +31,6 @@ export default function SurveyPage() {
   );
 
   const goToPreviousQuestion = () => {
-    console.log(formData);
     if (currentQuestion > 1) {
       setDirection(-1);
       setCurrentQuestion(currentQuestion - 1);
@@ -40,7 +39,6 @@ export default function SurveyPage() {
 
   //check if the answer exists:
   const isQuestionAnswered = (questionNum) => {
-    console.log(formData);
     switch (questionNum) {
       case 1:
         return !!formData.houseType;
@@ -69,7 +67,6 @@ export default function SurveyPage() {
       setDirection(1);
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      console.log("Sending Data:", formData);
       setIsLoading(true);
 
       const apiPromise = fetch("/api/submit", {
@@ -80,7 +77,7 @@ export default function SurveyPage() {
         body: JSON.stringify(formData),
       });
 
-      const minimumTimePromise = delay(1000);
+      const minimumTimePromise = delay(5000);
 
       try {
         const [response] = await Promise.all([apiPromise, minimumTimePromise]);
@@ -88,8 +85,6 @@ export default function SurveyPage() {
         const result = await response.json();
 
         if (response.ok) {
-          console.log("Result from the Server:", result);
-
           router.push(`/results?worthIt=${result.result}`);
         } else {
           console.error("Sending Error", result.message);
