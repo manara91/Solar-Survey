@@ -19,7 +19,7 @@ export default function ContactPage() {
             required
           />
 
-          <div className="form-group">
+          <div>
             <input
               type="email"
               name="email"
@@ -28,9 +28,8 @@ export default function ContactPage() {
               placeholder="E-mail"
               required
             />
-            <i className="fa fa-envelope"></i>
           </div>
-          <div className="form-group">
+          <div>
             <input
               type="text"
               name="subject"
@@ -39,9 +38,8 @@ export default function ContactPage() {
               placeholder="Betreff"
               required
             />
-            <i className="fa fa-book"></i>
           </div>
-          <div className="form-group">
+          <div>
             <textarea
               name="message"
               className={styles.formControl}
@@ -50,7 +48,6 @@ export default function ContactPage() {
               placeholder="Nachricht"
               required
             ></textarea>
-            <i className="fa fa-commenting"></i>
           </div>
 
           <Button text={"Send"}></Button>
