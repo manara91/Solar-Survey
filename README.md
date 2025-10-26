@@ -35,10 +35,10 @@ Um das Projekt lokal auszuführen, befolgen Sie bitte diese Schritte:
 
 ### 2. Abhängigkeiten installieren
 npm install
-# oder
+oder
 yarn install
 
 ### 3. Entwicklungsserver starten
 npm run dev
-# oder
+oder
 yarn dev
