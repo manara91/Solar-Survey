@@ -28,11 +28,11 @@ function QuestionThree({ updateFormData }) {
 
   return (
     <div className={styles.questionContainer}>
-      <form className={styles.questionForm}>
+      <form>
         <h3>3. Wie alt ist Ihr Dach?</h3>
-        <p>Mehrfachauswahl möglich:</p>
+        <p>(Mehrfachauswahl möglich)</p>
 
-        <div className={styles.optionsGroup}>
+        <div className={styles.questionLabels}>
           {options.map((option) => (
             <label
               key={option}

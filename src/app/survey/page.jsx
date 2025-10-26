@@ -117,7 +117,7 @@ export default function SurveyPage() {
       opacity: 0,
     }),
   };
-
+  const ifResultBtn = currentQuestion == 5;
   return (
     <div className={styles.surveyContainer}>
       {isLoading && (
@@ -166,6 +166,7 @@ export default function SurveyPage() {
           <Button
             text={currentQuestion < 5 ? "Nächste Frage" : "Ergebnis anzeigen"}
             handleClick={goToNextQuestion}
+            differentClassName={ifResultBtn ? styles.darkBlue : ""}
           />
         </motion.div>
       </div>

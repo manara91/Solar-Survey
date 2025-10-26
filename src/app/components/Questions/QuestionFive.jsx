@@ -8,7 +8,7 @@ function QuestionFive({ updateFormData }) {
   };
   return (
     <div className={styles.questionContainer}>
-      <form className={styles.questionForm} onChange={handleChange}>
+      <form onChange={handleChange}>
         <h3>5. Sind Sie auch an weiteren Energielösungen interessiert?</h3>
         <div className={styles.questionLabels}>
           <label>

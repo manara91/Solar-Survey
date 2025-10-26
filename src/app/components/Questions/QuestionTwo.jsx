@@ -26,11 +26,11 @@ function QuestionTwo({ updateFormData }) {
   }, [selectedOptions, noInformation]);
   return (
     <div className={styles.questionContainer}>
-      <form className={styles.questionForm}>
+      <form>
         <h3>2. Wie ist Ihr Dach ausgerichtet?</h3>
-        <p>Mehrfachauswahl möglich:</p>
+        <p>(Mehrfachauswahl möglich)</p>
 
-        <div className={styles.optionsGroup}>
+        <div className={styles.questionLabels}>
           {options.map((option) => (
             <label
               key={option}

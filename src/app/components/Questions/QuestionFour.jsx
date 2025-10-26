@@ -28,11 +28,11 @@ function QuestionFour({ updateFormData }) {
 
   return (
     <div className={styles.questionContainer}>
-      <form className={styles.questionForm}>
+      <form>
         <h3>4. Wie hoch ist Ihr Stromverbrach pro Jahr?</h3>
-        <p>(Mehrfachauswahl möglich):</p>
+        <p>(Mehrfachauswahl möglich)</p>
 
-        <div className={styles.optionsGroup}>
+        <div className={styles.questionLabels}>
           {options.map((option) => (
             <label
               key={option}

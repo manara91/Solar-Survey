@@ -9,7 +9,7 @@ function QuestionOne({ updateFormData }) {
   return (
     <>
       <div className={styles.questionContainer}>
-        <form className={styles.questionForm} onChange={handleChange}>
+        <form onChange={handleChange}>
           <h3>1. Welche Art von Immobilie besitzen Sie?</h3>
 
           <div className={styles.questionLabels}>

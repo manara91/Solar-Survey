@@ -8,7 +8,7 @@ export default function ContactPage() {
     <div className={styles.contactContainer}>
       <div className={styles.contactForm}>
         <form action="#">
-          <h1>Schicken Sie uns eine Nachricht</h1>
+          <h1>Schreiben Sie uns</h1>
 
           <input
             type="text"

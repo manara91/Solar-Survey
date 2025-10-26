@@ -26,12 +26,18 @@ export default function Home() {
         </p>
 
         <Button
-          text="Kostenlos prüfen"
+          text={"Kostenlos prüfen"}
           handleClick={handleSurveyStart}
         ></Button>
       </div>
       <div className={styles.col}>
-        <Image className={styles.img} src={mainPhoto} alt="main Photo Image" />
+        <Image
+          className={styles.homeImg}
+          src={mainPhoto}
+          width={500}
+          height={500}
+          alt="main Photo Image"
+        />
       </div>
     </div>
   );
