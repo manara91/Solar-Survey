@@ -42,3 +42,5 @@ yarn install
 npm run dev
 oder
 yarn dev
+
+Die App sollte nun unter http://localhost:3000 erreichbar sein.
