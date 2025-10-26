@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export function useCheckboxRadioToggle(initialOptions = []) {
+export function useCheckboxButton(initialOptions = []) {
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [noInformation, setNoInformation] = useState(false);
+  const [noInfo, setnoInfo] = useState(false);
 
   const handleRadioClick = (e) => {
-    setNoInformation((prev) => {
+    setnoInfo((prev) => {
       const next = !prev;
       if (next) {
         setSelectedOptions([]);
@@ -17,14 +17,14 @@ export function useCheckboxRadioToggle(initialOptions = []) {
   const handleRadioChange = (e) => {
     const checked = e.target.checked;
 
-    setNoInformation(checked);
+    setnoInfo(checked);
     if (checked) setSelectedOptions([]);
   };
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      setNoInformation(false);
+      setnoInfo(false);
       setSelectedOptions((prev) => {
         if (prev.includes(value)) return prev;
         return [...prev, value];
@@ -36,17 +36,17 @@ export function useCheckboxRadioToggle(initialOptions = []) {
 
   const resetSelections = () => {
     setSelectedOptions([]);
-    setNoInformation(false);
+    setnoInfo(false);
   };
 
   return {
     selectedOptions,
-    noInformation,
+    noInfo,
     handleRadioClick,
     handleRadioChange,
     handleCheckboxChange,
     resetSelections,
 
-    isCheckboxDisabled: noInformation,
+    isCheckboxDisabled: noInfo,
   };
 }

@@ -1,27 +1,22 @@
-import React, { useEffect } from "react";
-import { useCheckboxRadioToggle } from "../../../hooks/useCheckboxRadioToggle";
+import { useEffect } from "react";
+import { useCheckboxButton } from "../../../hooks/useCheckboxButton";
 import styles from "./questions.module.css";
 
 function CheckboxQuestions({ question, options, formKey, updateFormData }) {
-  const {
-    selectedOptions,
-    noInformation,
-    handleRadioChange,
-    handleCheckboxChange,
-    isRadioDisabled,
-  } = useCheckboxRadioToggle();
+  const { selectedOptions, noInfo, handleRadioChange, handleCheckboxChange } =
+    useCheckboxButton();
 
   useEffect(() => {
     let valueToStore;
 
-    if (noInformation) {
+    if (noInfo) {
       valueToStore = "Keine Angabe";
     } else {
       valueToStore = selectedOptions;
     }
 
     updateFormData(formKey, valueToStore);
-  }, [selectedOptions, noInformation, formKey, updateFormData]);
+  }, [selectedOptions, noInfo, formKey, updateFormData]);
 
   return (
     <div className={styles.questionContainer}>
@@ -31,16 +26,13 @@ function CheckboxQuestions({ question, options, formKey, updateFormData }) {
 
         <div className={styles.questionLabels}>
           {options.map((option) => (
-            <label
-              key={option}
-              className={noInformation ? styles.disabledLabel : ""}
-            >
+            <label key={option} className={noInfo ? styles.disabledLabel : ""}>
               <input
                 type="checkbox"
                 value={option}
                 name={formKey}
                 onChange={handleCheckboxChange}
-                disabled={noInformation}
+                disabled={noInfo}
                 checked={selectedOptions.includes(option)}
               />
               {option}
@@ -51,12 +43,11 @@ function CheckboxQuestions({ question, options, formKey, updateFormData }) {
 
           <label>
             <input
-              type="radio"
+              type="checkbox"
               value="Keine Angabe"
               name={`${formKey}Status`}
               onChange={handleRadioChange}
-              checked={noInformation}
-              disabled={isRadioDisabled}
+              checked={noInfo}
             />
             Keine Angabe
           </label>

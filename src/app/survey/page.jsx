@@ -16,6 +16,7 @@ export default function SurveyPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -36,7 +37,35 @@ export default function SurveyPage() {
     }
   };
 
+  //check if the answer exists:
+  const isQuestionAnswered = (questionNum) => {
+    switch (questionNum) {
+      case 1:
+        return !!formData.houseType;
+      case 2:
+        return (
+          formData.question2_options && formData.question2_options.length > 0
+        );
+      case 3:
+        return (
+          formData.question3_options && formData.question3_options.length > 0
+        );
+      case 4:
+        return (
+          formData.question4_options && formData.question4_options.length > 0
+        );
+      case 5:
+        return !!formData.energySolutions;
+      default:
+        return false;
+    }
+  };
   const goToNextQuestion = async () => {
+    if (!isQuestionAnswered(currentQuestion)) {
+      setShowError(true);
+      return;
+    }
+    setShowError(false);
     if (currentQuestion < 5) {
       setDirection(1);
       setCurrentQuestion(currentQuestion + 1);
@@ -52,7 +81,7 @@ export default function SurveyPage() {
         body: JSON.stringify(formData),
       });
 
-      const minimumTimePromise = delay(5000);
+      const minimumTimePromise = delay(1000);
 
       try {
         const [response] = await Promise.all([apiPromise, minimumTimePromise]);
@@ -131,7 +160,7 @@ export default function SurveyPage() {
           <RadioQuestions
             question="5. Sind Sie auch an weiteren Energielösungen interessiert?"
             options={["Ja", "Nein", "Weis nicht"]}
-            name="EnergySolutions"
+            name="energySolutions"
             updateFormData={updateFormData}
           />
         );
@@ -192,6 +221,13 @@ export default function SurveyPage() {
             {renderCurrentQuestion()}
           </motion.div>
         </AnimatePresence>
+      </div>
+      <div className={styles.errorMsg}>
+        {showError && (
+          <p>
+            Bitte beantworten Sie zuerst die aktuelle Frage bevor Sie fortfahren
+          </p>
+        )}
       </div>
       <div className={styles.surveyButtons}>
         {currentQuestion > 1 && (

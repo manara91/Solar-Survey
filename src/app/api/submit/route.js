@@ -3,23 +3,23 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   const data = await request.json();
 
-  if (!data || !data.houseType) {
-    return NextResponse.json(
-      { success: false, message: "Invalid or missing data." },
-      { status: 400 }
-    );
-  }
+  // if (!data || !data.houseType) {
+  //   return NextResponse.json(
+  //     { success: false, message: "missing data." },
+  //     { status: 400 }
+  //   );
+  // }
 
-  if (!data.question2_options) {
-    return NextResponse.json(
-      { success: false, message: "Missing required field: question2_options." },
-      { status: 400 }
-    );
-  }
+  // if (data.question2_options.length === 0) {
+  //   return NextResponse.json(
+  //     { success: false, message: "Missing required field: question2_options." },
+  //     { status: 400 }
+  //   );
+  // }
+
   const randomValue = Math.floor(Math.random() * 2);
 
   const isSolarWorthIt = randomValue === 1;
-  // const isSolarWorthIt = Math.random() < 0.5;
 
   const responseMessage = isSolarWorthIt
     ? "yes it worth"
