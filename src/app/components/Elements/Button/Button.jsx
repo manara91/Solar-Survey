@@ -2,7 +2,7 @@
 import styles from "./button.module.css";
 
 function Button({ text, handleClick, differentClassName }) {
-  const classNames = [styles.button, differentClassName].filter(Boolean); // تزيل القيم الفارغة/Null من المصفوفة
+  const classNames = [styles.button, differentClassName].filter(Boolean);
   return (
     <button className={classNames.join(" ")} onClick={handleClick}>
       {text}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./survey.module.css";
-import Button from "../../elements/Button/Button";
+import Button from "../components/Elements/Button/Button";
 import loader from "../../../public/images/loader.svg";
 
 import CheckboxQuestions from "../components/Questions/CheckboxQuestions";
@@ -31,6 +31,7 @@ export default function SurveyPage() {
   );
 
   const goToPreviousQuestion = () => {
+    console.log(formData);
     if (currentQuestion > 1) {
       setDirection(-1);
       setCurrentQuestion(currentQuestion - 1);
@@ -39,21 +40,19 @@ export default function SurveyPage() {
 
   //check if the answer exists:
   const isQuestionAnswered = (questionNum) => {
+    console.log(formData);
     switch (questionNum) {
       case 1:
         return !!formData.houseType;
       case 2:
         return (
-          formData.question2_options && formData.question2_options.length > 0
+          formData.question2_answer && formData.question2_answer.length > 0
         );
       case 3:
-        return (
-          formData.question3_options && formData.question3_options.length > 0
-        );
+        return !!formData.houseAge;
+
       case 4:
-        return (
-          formData.question4_options && formData.question4_options.length > 0
-        );
+        return !!formData.electricityConsumption;
       case 5:
         return !!formData.energySolutions;
       default:
@@ -121,6 +120,7 @@ export default function SurveyPage() {
               "Gewerbeimmobilie",
             ]}
             name="houseType"
+            currentValue={formData.houseType ?? []}
             updateFormData={updateFormData}
           />
         );
@@ -130,27 +130,40 @@ export default function SurveyPage() {
           <CheckboxQuestions
             question="2. Wie ist Ihr Dach ausgerichtet?"
             options={["Süd", "West", "Ost", "Nord"]}
-            formKey="question2_options"
+            formKey="question2_answer"
+            currentValue={formData.question2_answer ?? []}
             updateFormData={updateFormData}
           />
         );
 
       case 3:
         return (
-          <CheckboxQuestions
+          <RadioQuestions
             question="3. Wie alt ist Ihr Dach?"
-            options={["Unter 5 Jahre", "5-15 Jahre", "Über 15 Jahre"]}
-            formKey="question3_options"
+            options={[
+              "Unter 5 Jahre",
+              "5-15 Jahre",
+              "Über 15 Jahre",
+              "Keine Angabe",
+            ]}
+            name="houseAge"
+            currentValue={formData.houseAge ?? []}
             updateFormData={updateFormData}
           />
         );
 
       case 4:
         return (
-          <CheckboxQuestions
+          <RadioQuestions
             question="4. Wie hoch ist Ihr Stromverbrach pro Jahr?"
-            options={["Unter 3.000 kWh", "3.000 - 5.000 kWh", "Über 5.000 kWh"]}
-            formKey="question4_options"
+            options={[
+              "Unter 3.000 kWh",
+              "3.000 - 5.000 kWh",
+              "Über 5.000 kWh",
+              "Keine Angabe",
+            ]}
+            name="electricityConsumption"
+            currentValue={formData.electricityConsumption ?? []}
             updateFormData={updateFormData}
           />
         );
@@ -161,6 +174,7 @@ export default function SurveyPage() {
             question="5. Sind Sie auch an weiteren Energielösungen interessiert?"
             options={["Ja", "Nein", "Weis nicht"]}
             name="energySolutions"
+            currentValue={formData.energySolutions ?? []}
             updateFormData={updateFormData}
           />
         );

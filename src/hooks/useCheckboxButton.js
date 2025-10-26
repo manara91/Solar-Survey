@@ -1,18 +1,10 @@
 import { useState } from "react";
 
-export function useCheckboxButton(initialOptions = []) {
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [noInfo, setnoInfo] = useState(false);
-
-  const handleRadioClick = (e) => {
-    setnoInfo((prev) => {
-      const next = !prev;
-      if (next) {
-        setSelectedOptions([]);
-      }
-      return next;
-    });
-  };
+export function useCheckboxButton(initialOptions) {
+  const [selectedOptions, setSelectedOptions] = useState(initialOptions);
+  const [noInfo, setnoInfo] = useState(
+    initialOptions === "Keine Angabe" ? true : false
+  );
 
   const handleRadioChange = (e) => {
     const checked = e.target.checked;
@@ -42,7 +34,6 @@ export function useCheckboxButton(initialOptions = []) {
   return {
     selectedOptions,
     noInfo,
-    handleRadioClick,
     handleRadioChange,
     handleCheckboxChange,
     resetSelections,

@@ -2,9 +2,15 @@ import { useEffect } from "react";
 import { useCheckboxButton } from "../../../hooks/useCheckboxButton";
 import styles from "./questions.module.css";
 
-function CheckboxQuestions({ question, options, formKey, updateFormData }) {
-  const { selectedOptions, noInfo, handleRadioChange, handleCheckboxChange } =
-    useCheckboxButton();
+function CheckboxQuestions({
+  question,
+  options,
+  formKey,
+  currentValue,
+  updateFormData,
+}) {
+  let { selectedOptions, noInfo, handleRadioChange, handleCheckboxChange } =
+    useCheckboxButton(currentValue);
 
   useEffect(() => {
     let valueToStore;
@@ -33,7 +39,7 @@ function CheckboxQuestions({ question, options, formKey, updateFormData }) {
                 name={formKey}
                 onChange={handleCheckboxChange}
                 disabled={noInfo}
-                checked={selectedOptions.includes(option)}
+                checked={currentValue.includes(option)}
               />
               {option}
             </label>

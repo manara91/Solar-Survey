@@ -1,7 +1,7 @@
 import Image from "next/image";
 import msg from "../../../public/images/msg.svg";
 import styles from "./contact.module.css";
-import Button from "../../elements/Button/Button";
+import Button from "../components/Elements/Button/Button";
 
 export default function ContactPage() {
   return (

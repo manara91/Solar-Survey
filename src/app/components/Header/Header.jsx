@@ -1,8 +1,8 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./Header.module.css";
-import DarkModeToggle from "../../../elements/DarkModeToggle/DarkModeToggle";
-import Button from "../../../elements/Button/Button";
+import DarkModeToggle from "../Elements/DarkModeToggle/DarkModeToggle";
+import Button from "../Elements/Button/Button";
 
 function Header() {
   const pathname = usePathname();

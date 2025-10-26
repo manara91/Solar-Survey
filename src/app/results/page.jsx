@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Button from "../../elements/Button/Button";
+import Button from "../components/Elements/Button/Button";
 import styles from "./results.module.css";
 import yesImage from "../../../public/images/yes.svg";
 import noImage from "../../../public/images/no.svg";

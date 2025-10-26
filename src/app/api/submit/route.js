@@ -2,20 +2,36 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   const data = await request.json();
+  // قم بتحديد جميع المسارات التي يجب التحقق منها داخل كائن البيانات
+  const requiredPaths = [
+    "houseType",
+    "houseAge",
+    "electricityConsumption",
+    "energySolutions",
+    "question2_answer", // أضفناه هنا
+  ];
 
-  // if (!data || !data.houseType) {
-  //   return NextResponse.json(
-  //     { success: false, message: "missing data." },
-  //     { status: 400 }
-  //   );
-  // }
+  // تحقق مما إذا كانت البيانات مفقودة أو أن أي مسار من المسارات المطلوبة مفقود أو فارغ
+  const isDataInvalid =
+    !data ||
+    requiredPaths.some((path) => {
+      const value = data[path];
 
-  // if (data.question2_options.length === 0) {
-  //   return NextResponse.json(
-  //     { success: false, message: "Missing required field: question2_options." },
-  //     { status: 400 }
-  //   );
-  // }
+      // التحقق من القيمة
+      if (value === undefined || value === null) return true;
+
+      // التحقق من المصفوفة الفارغة (كما في question2_answer)
+      if (Array.isArray(value) && value.length === 0) return true;
+
+      return false;
+    });
+
+  if (isDataInvalid) {
+    return NextResponse.json(
+      { success: false, message: "missing answers" },
+      { status: 400 }
+    );
+  }
 
   const randomValue = Math.floor(Math.random() * 2);
 

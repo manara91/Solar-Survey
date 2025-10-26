@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 import mainPhoto from "../../public/images/main-photo.svg";
 
 import { useRouter } from "next/navigation";
-import Button from "../elements/Button/Button";
+import Button from "./components/Elements/Button/Button";
 
 export default function Home() {
   const router = useRouter();
